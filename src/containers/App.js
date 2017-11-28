@@ -1,34 +1,21 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import ReactDOM from 'react-dom'
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom'
 
-import User from '../components/User'
-import Page from '../components/Page'
-import * as pageActions from '../actions/PageActions'
+import Registration from '../components/Registration'
+import Login from '../components/Login'
 
-class App extends Component {
-  render() {
-    const { user, page } = this.props
-    const { setYear } = this.props.pageActions
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Registration} />
+      <Route path="/login" component={Login} />
+    </Switch>
+  </BrowserRouter>
+)
 
-    return <div>
-      <User name={user.name} />
-      <Page photos={page.photos} year={page.year} setYear={setYear} />
-    </div>
-  }
-}
-
-function mapStateToProps (state) {
-  return {
-    user: state.user,
-    page: state.page
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    pageActions: bindActionCreators(pageActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App;

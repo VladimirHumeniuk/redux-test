@@ -1,14 +1,30 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom'
 import { Provider } from 'react-redux'
-import App from './containers/App'
-import configureStore from './store/configureStore'
 
-const store = configureStore()
+import RegistrationContainer from './containers/RegistrationContainer'
+import Login from './components/Login'
+import Home from './components/Home'
+import store from './store/configureStore'
 
-render(
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/login" component={Login} />
+      <Route path="/registration" component={RegistrationContainer} />
+    </Switch>
+  </BrowserRouter>
+)
+
+ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
-)
+);
