@@ -1,13 +1,20 @@
-import { REG_USER } from '../constants/Registration'
+import { REG_USER } from '../constants/Registration';
 
-const userReducer = (state = {}, action) => {
-  switch(action.type) {
+const initialState = {
+  username: '',
+  email: '',
+  isAuth: false,
+};
+
+const userReducer = (state = initialState, { type, user }) => {
+  switch (type) {
     case REG_USER:
-      return Object.assign(state, action.user);
+      console.log('REDUCER WORK');
+      return Object.assign(state, user);
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default userReducer
+export default userReducer;

@@ -1,15 +1,30 @@
 import React, { Component } from 'react'
-import { withRouter } from "react-router-dom";
+
 import Navigation from './Navigation/Navigation'
 
-class Registration extends Component {
-  state = {
-    username: '',
-    email: '',
-    password: ''
-  };
+export default class Registration extends Component {
+  constructor(props) {
+    super(props);
 
-  handleChange = (event) => {
+    this.state = {
+      username: '',
+      email: '',
+      password: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('PROPS-UPDATE', nextProps);
+  }
+
+  componentWillUpdate(nextProps) {
+    console.log('UPDATE', nextProps);
+  }
+
+  handleChange(event) {
     switch(event.target.name) {
       case 'username':
         this.setState({ username: event.target.value });
@@ -25,18 +40,15 @@ class Registration extends Component {
     }
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit(event) {
     event.preventDefault();
-    try {
-      const { username, email, password } = this.state;
-      await this.props.regUser(username, email, password);
-      this.props.history.push('/login');
-    } catch (error) {
-      console.log(error);
-    }
+
+    const { username, email, password } = this.state;
+    this.props.regUser(username, email, password);
   }
 
   render() {
+    console.log('REG-PROPS', this.props);
     return (
       <div>
         <Navigation />
@@ -70,4 +82,3 @@ class Registration extends Component {
   }
 }
 
-export default withRouter(Registration);

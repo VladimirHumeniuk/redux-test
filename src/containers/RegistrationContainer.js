@@ -1,11 +1,17 @@
 import { regUser } from '../actions/Registration'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
+
 import Registration from '../components/Registration'
+
+const mapStateToProps = state => ({
+  userAuth: state.userReducer.isAuth,
+});
 
 const mapDispatchToProps = dispatch => ({
   regUser: (username, email, password) => dispatch(regUser(username, email, password)),
 })
 
-const RegistrationContainer = connect(null, mapDispatchToProps)(Registration);
+const enhance = connect(mapStateToProps, mapDispatchToProps);
 
-export default RegistrationContainer;
+export default enhance(withRouter(Registration));

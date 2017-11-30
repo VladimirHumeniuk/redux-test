@@ -1,28 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {
-  BrowserRouter,
-  Route,
-  Switch
-} from 'react-router-dom'
-import { Provider } from 'react-redux'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import RegistrationContainer from './containers/RegistrationContainer'
-import Login from './components/Login'
-import Home from './components/Home'
-import store from './store/configureStore'
+import store from './store';
+import App from './components/App';
 
-store.subscribe(() => console.log(store.getState()));
-
-const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route path="/registration" component={RegistrationContainer} />
-    </Switch>
-  </BrowserRouter>
-)
+store.subscribe(() => console.log('CHANGE-STATE', store.getState()));
 
 ReactDOM.render(
   <Provider store={store}>
