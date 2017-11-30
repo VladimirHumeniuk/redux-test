@@ -1,9 +1,9 @@
-import { getUser } from '../actions/Registration'
+import { regUser } from '../actions/Registration'
 import { connect } from 'react-redux'
 import Registration from '../components/Registration'
 
 const mapDispatchToProps = dispatch => ({
-  getUser: (username, email, password) => dispatch(getUser(username, email, password))
+  regUser: (username, email, password) => dispatch(regUser(username, email, password)),
 })
 
 const RegistrationContainer = connect(null, mapDispatchToProps)(Registration);

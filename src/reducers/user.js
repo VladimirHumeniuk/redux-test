@@ -1,9 +1,9 @@
-import { GET_USER } from '../constants/Registration'
+import { REG_USER } from '../constants/Registration'
 
-const userReducer = (state = [], action) => {
+const userReducer = (state = {}, action) => {
   switch(action.type) {
-    case GET_USER:
-      return action.user
+    case REG_USER:
+      return Object.assign(state, action.user);
 
     default:
       return state

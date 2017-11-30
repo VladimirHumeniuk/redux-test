@@ -3,20 +3,13 @@ import { withRouter } from "react-router-dom";
 import Navigation from './Navigation/Navigation'
 
 class Registration extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    username: '',
+    email: '',
+    password: ''
+  };
 
-    this.state = {
-      username: '',
-      email: '',
-      password: ''
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
+  handleChange = (event) => {
     switch(event.target.name) {
       case 'username':
         this.setState({ username: event.target.value });
@@ -32,9 +25,15 @@ class Registration extends Component {
     }
   }
 
-  handleSubmit(event) {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.props.getUser(this.state.username, this.state.email, this.state.password);
+    try {
+      const { username, email, password } = this.state;
+      await this.props.regUser(username, email, password);
+      this.props.history.push('/login');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

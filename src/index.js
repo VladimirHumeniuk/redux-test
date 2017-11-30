@@ -12,6 +12,8 @@ import Login from './components/Login'
 import Home from './components/Home'
 import store from './store/configureStore'
 
+store.subscribe(() => console.log(store.getState()));
+
 const App = () => (
   <BrowserRouter>
     <Switch>
