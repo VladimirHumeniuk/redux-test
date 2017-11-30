@@ -9,8 +9,11 @@ const initialState = {
 const userReducer = (state = initialState, { type, user }) => {
   switch (type) {
     case REG_USER:
-      console.log('REDUCER WORK');
-      return Object.assign(state, user);
+      return Object.assign({}, state, {
+        username: user.username,
+        email: user.email,
+        isAuth: user.isAuth,
+      });
 
     default:
       return state;

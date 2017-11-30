@@ -3,28 +3,21 @@ import React, { Component } from 'react'
 import Navigation from './Navigation/Navigation'
 
 export default class Registration extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: '',
-      email: '',
-      password: ''
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = {
+    username: '',
+    email: '',
+    password: ''
+  };
 
   componentWillReceiveProps(nextProps) {
-    console.log('PROPS-UPDATE', nextProps);
+    const { isAuth } = nextProps.user;
+
+    if (isAuth) {
+      this.props.history.push('/login');
+    }
   }
 
-  componentWillUpdate(nextProps) {
-    console.log('UPDATE', nextProps);
-  }
-
-  handleChange(event) {
+  handleChange = (event) => {
     switch(event.target.name) {
       case 'username':
         this.setState({ username: event.target.value });
@@ -40,7 +33,7 @@ export default class Registration extends Component {
     }
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const { username, email, password } = this.state;
@@ -48,7 +41,7 @@ export default class Registration extends Component {
   }
 
   render() {
-    console.log('REG-PROPS', this.props);
+    const { username, email, password } = this.state;
     return (
       <div>
         <Navigation />
@@ -57,21 +50,21 @@ export default class Registration extends Component {
           <input
             type='text'
             name='username'
-            value={this.state.username}
+            value={username}
             onChange={this.handleChange}
             placeholder='User Name'
           />
           <input
             type='email'
             name='email'
-            value={this.state.email}
+            value={email}
             onChange={this.handleChange}
             placeholder='email'
           />
           <input
             type='password'
             name='password'
-            value={this.state.password}
+            value={password}
             onChange={this.handleChange}
             placeholder='password'
           />

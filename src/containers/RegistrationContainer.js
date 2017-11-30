@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Registration from '../components/Registration'
 
 const mapStateToProps = state => ({
-  userAuth: state.userReducer.isAuth,
+  user: state.userReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
