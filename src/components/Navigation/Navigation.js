@@ -8,6 +8,7 @@ const Navigation = () => (
     <nav>
       <Link className="header__link" to="/login"> Login </Link>
       <Link className="header__link" to="/registration"> registration </Link>
+      <Link className="header__link" to="/profile"> Profile </Link>
     </nav>
   </header>
 );

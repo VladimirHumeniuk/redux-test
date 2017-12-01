@@ -13,7 +13,7 @@ export default class Registration extends Component {
     const { isAuth } = nextProps.user;
 
     if (isAuth) {
-      this.props.history.push('/login');
+      this.props.history.push('/profile');
     }
   }
 
@@ -74,4 +74,3 @@ export default class Registration extends Component {
     );
   }
 }
-
