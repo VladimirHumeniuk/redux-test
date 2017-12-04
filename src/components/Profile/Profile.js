@@ -9,13 +9,13 @@ export default class Profile extends Component {
     email: this.props.user.email
   };
 
-  componentWillMount(nextProps) {
-    const { isAuth } = nextProps.user;
-
-    if (isAuth) {
-      this.props.history.push('/login');
-    }
-  }
+  // componentWillMount(nextProps) {
+  //   const { isAuth } = nextProps.user;
+  //
+  //   if (isAuth) {
+  //     this.props.history.push('/login');
+  //   }
+  // }
 
   handleChange = () => {
     this.setState((state) => ({

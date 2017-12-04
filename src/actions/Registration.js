@@ -9,7 +9,7 @@ export const regUser = async (username, email, password) => {
     user: {
       username: userData.result.username,
       email: userData.result.email,
-      isAuth: true,
+      isAuth: true
     },
   };
 };

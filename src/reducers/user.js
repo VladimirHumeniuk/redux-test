@@ -1,4 +1,5 @@
 import { REG_USER } from '../constants/Registration';
+import { LOGIN_USER } from '../constants/Login';
 
 const initialState = {
   username: '',
@@ -13,6 +14,13 @@ const userReducer = (state = initialState, { type, user }) => {
         username: user.username,
         email: user.email,
         isAuth: user.isAuth,
+      });
+
+    case LOGIN_USER:
+      return Object.assign({}, state, {
+        username: user.username,
+        email: user.email,
+        isAuth: user.isAuth
       });
 
     default:
