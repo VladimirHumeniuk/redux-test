@@ -9,9 +9,9 @@ export default class Login extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    const { isAuth } = nextProps.status;
+    const { isAuth } = nextProps.user;
 
-    if (isAuth === "success") {
+    if (isAuth) {
       this.props.history.push('/profile');
     }
   }
