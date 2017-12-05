@@ -1,4 +1,4 @@
-import { regUser } from '../actions/Registration'
+import { openProfile } from '../actions/Profile'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  regUser: (username, email, password) => dispatch(regUser(username, email, password)),
+  openProfile: (token) => dispatch(openProfile(token)),
 })
 
 const enhance = connect(mapStateToProps, mapDispatchToProps);

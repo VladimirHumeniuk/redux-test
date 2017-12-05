@@ -1,0 +1,12 @@
+.user-data {
+  display: flex;
+  flex-direction: column; }
+
+.user-data__row,
+textarea {
+  margin-bottom: 1rem; }
+
+textarea {
+  resize: none;
+  height: 22px;
+  font-family: unset; }

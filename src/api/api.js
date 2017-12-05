@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const regUserInServer = (username, email, password) => {
   return axios.post('https://test-api.live.gbksoft.net/rest/v1/user/register', {
@@ -6,7 +6,7 @@ export const regUserInServer = (username, email, password) => {
     email,
     password,
   })
-    .then(({ data }) => data);
+  .then(({ data }) => data);
 };
 
 export const logUserInServer = (username, password) => {
@@ -14,5 +14,17 @@ export const logUserInServer = (username, password) => {
     username,
     password
   })
-    .then(({ data }) => data);
+  .then(({ data }) => data);
 };
+
+export const getCurrentUser = (token) => {
+  return axios({
+    method:'get',
+    url:'https://test-api.live.gbksoft.net/rest/v1/user/current',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    responseType:'json'
+  })
+  .then(({ data }) => data);
+}

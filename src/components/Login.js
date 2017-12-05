@@ -42,23 +42,27 @@ export default class Login extends Component {
       <div>
         <Navigation />
 
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type='text'
-            name='username'
-            value={username}
-            onChange={this.handleChange}
-            placeholder='User Name'
-          />
-          <input
-            type='password'
-            name='password'
-            value={password}
-            onChange={this.handleChange}
-            placeholder='password'
-          />
-          <button type='submit'> Submit </button>
-        </form>
+        <div className='content'>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type='text'
+              name='username'
+              value={username}
+              onChange={this.handleChange}
+              placeholder='User Name'
+              required
+            />
+            <input
+              type='password'
+              name='password'
+              value={password}
+              onChange={this.handleChange}
+              placeholder='Password'
+              required
+            />
+            <button type='submit'> Submit </button>
+          </form>
+        </div>
       </div>
     );
   }
